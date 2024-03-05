@@ -15,9 +15,11 @@ import { GetUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
 import { TodoService } from './todo.service';
 import { CreateTodoDto, EditTodoDto } from './dto';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @UseGuards(JwtGuard)
 @Controller('todos')
+@ApiBearerAuth('JWT-auth')
 export class TodoController {
   constructor(private todoService: TodoService) {}
 
